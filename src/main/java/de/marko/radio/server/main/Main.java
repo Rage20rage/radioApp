@@ -1,4 +1,4 @@
-package lws.radio.marko.main;
+package de.marko.radio.server.main;
 
 public class Main {
 
