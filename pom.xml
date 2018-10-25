@@ -7,7 +7,11 @@
     <groupId>Radio</groupId>
     <artifactId>Radio</artifactId>
     <version>1.0-SNAPSHOT</version>
-    
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -15,7 +19,8 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>lws.banksystem.server.network.Main</mainClass>
+                            <mainClass>de.marko.radio.server.main.Main</mainClass>
+                            <!--<mainClass>de.marko.radio.client.main.Main</mainClass> -->
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -40,22 +45,36 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
     <dependencies>
 
+        <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>3.11.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.squareup.okio/okio -->
         <dependency>
             <groupId>com.squareup.okio</groupId>
             <artifactId>okio</artifactId>
             <version>2.1.0</version>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/javazoom/jlayer -->
         <dependency>
@@ -64,6 +83,12 @@
             <version>1.0.1</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
 
     </dependencies>
 
