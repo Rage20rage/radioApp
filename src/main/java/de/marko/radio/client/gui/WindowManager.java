@@ -27,10 +27,11 @@ public class WindowManager {
     public void startMainWindow() {
         mainWindow = new MainWindow();
     }
+private boolean settingPanelIsOpen = false;
 
     public void displayFavoritPanel() {
         logger.info("Wechsle zum FavortitenListPanel...");
-        if(PlayerManager.getInstance().getPlayerMode() != PlayerMode.FAVORIT) {
+        if(PlayerManager.getInstance().getPlayerMode() != PlayerMode.FAVORIT || settingPanelIsOpen) {
             mainWindow.setFavoritListPanel();
             mainWindow.cardPanel.repaint();
             CardLayout cardLayout = (CardLayout) mainWindow.cardPanel.getLayout();
@@ -43,17 +44,31 @@ public class WindowManager {
             CardLayout cardLayout = (CardLayout) mainWindow.cardPanel.getLayout();
             cardLayout.show(mainWindow.cardPanel, "favoritList");
         }
+        settingPanelIsOpen = false;
         logger.info("Das Panel wurde gewechselt!");
     }
 
     public void displayHomePanel() {
         logger.info("Wechsle zum StationListPanel...");
-        if(PlayerManager.getInstance().getPlayerMode() != PlayerMode.ALL) {
+        if(PlayerManager.getInstance().getPlayerMode() != PlayerMode.ALL || settingPanelIsOpen) {
             mainWindow.setStationListPanel();
             mainWindow.cardPanel.repaint();
             CardLayout cardLayout = (CardLayout) mainWindow.cardPanel.getLayout();
             cardLayout.show(mainWindow.cardPanel, "stationList");
             PlayerManager.getInstance().setPlayerMode(PlayerMode.ALL);
+        }
+        logger.info("Das Panel wurde gewechselt!");
+        settingPanelIsOpen = false;
+    }
+
+    public void displaySettingPanel() {
+        logger.info("Wechsle zum SettingPanel...");
+        if(!settingPanelIsOpen) {
+            mainWindow.setProgrammSettingPanel();
+            mainWindow.cardPanel.repaint();
+            CardLayout cardLayout = (CardLayout) mainWindow.cardPanel.getLayout();
+            cardLayout.show(mainWindow.cardPanel, "settings");
+            settingPanelIsOpen = true;
         }
         logger.info("Das Panel wurde gewechselt!");
     }

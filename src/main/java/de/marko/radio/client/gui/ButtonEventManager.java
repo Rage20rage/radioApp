@@ -55,6 +55,8 @@ public class ButtonEventManager implements ActionListener {
             WindowManager.getInstance().displayHomePanel();
         } else if(buttonName.equals("MENU-Favorit")) {
             WindowManager.getInstance().displayFavoritPanel();
+        } else if(buttonName.equals("MENU-Settings")) {
+            WindowManager.getInstance().displaySettingPanel();
         }
     }
 

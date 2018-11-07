@@ -40,6 +40,7 @@ public class MainWindow extends JFrame {
     private JPanel audioSettingsPanel = new JPanel(new GridBagLayout());
     protected JPanel stationListPanel = new JPanel(new SpringLayout());
     protected JPanel favoritListPanel = new JPanel(new SpringLayout());
+    protected JPanel programmSettingPanel = new JPanel();
     protected JPanel cardPanel = new JPanel(new CardLayout());
     protected JScrollPane scrollPane;
     private JLabel  isPlaying = new JLabel();
@@ -73,6 +74,7 @@ public class MainWindow extends JFrame {
         setStationListPanel();
         setAudioSettingPanel();
         setFavoritListPanel();
+        setProgrammSettingPanel();
         setCradPanel();
 
         logger.debug("Zeige alle Fenster...");
@@ -135,7 +137,7 @@ public class MainWindow extends JFrame {
         homeButton.setName("MENU-Home");
         favoritButton.setName("MENU-Favorit");
         ownStationButton.setName("MENU-");
-        settingsButton.setName("MENU-");
+        settingsButton.setName("MENU-Settings");
 
         logger.debug("Setzte alle Bilder...");
         Image image = new ImageIcon(getClass().getResource("/home.png")).getImage();
@@ -160,7 +162,7 @@ public class MainWindow extends JFrame {
         gridBagConstraints.gridy = 1;
         menuPanel.add(favoritButton, gridBagConstraints);
         gridBagConstraints.gridy = 2;
-        menuPanel.add(ownStationButton, gridBagConstraints);
+        //menuPanel.add(ownStationButton, gridBagConstraints);
         gridBagConstraints.gridy = 3;
         menuPanel.add(settingsButton, gridBagConstraints);
         gridBagConstraints.gridy = 19;
@@ -175,11 +177,12 @@ public class MainWindow extends JFrame {
         logger.debug("Füge ActionListener hinzu...");
         homeButton.addActionListener(new ButtonEventManager());
         favoritButton.addActionListener(new ButtonEventManager());
+        settingsButton.addActionListener(new ButtonEventManager());
 
         logger.debug("Zeige alle Sources...");
         homeButton.show();
         favoritButton.show();
-        ownStationButton.show();
+        //ownStationButton.show();
         settingsButton.show();
         isPlaying.show();
     }
@@ -284,9 +287,25 @@ public class MainWindow extends JFrame {
         SpringUtilities.makeCompactGrid(favoritListPanel, i, 4, 1,1,10,10);
     }
 
+    protected void setProgrammSettingPanel() {
+        logger.debug("Baue das ProgrammSettingPanel...");
+        programmSettingPanel.removeAll();
+        JLabel jLabel = new JLabel("Zurzeit sind keine Einstellungen Verfügbar!");
+
+        logger.debug("Setzte alle SourceNamen...");
+
+        logger.debug("Füge die Sources dem dazugehörigen Panel hinzu...");
+        programmSettingPanel.add(jLabel);
+
+        logger.debug("Zeige alle Sources...");
+        jLabel.show();
+        //programmSettingPanel.show();
+    }
+
     private void setCradPanel() {
         cardPanel.add(stationListPanel, "stationList");
         cardPanel.add(favoritListPanel, "favoritList");
+        cardPanel.add(programmSettingPanel, "settings");
     }
 
     private void setStationListPanelToScrollable() {
