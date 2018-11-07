@@ -68,10 +68,8 @@ public class NetworkHandler {
             BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
             logger.debug(connection.getIP() + " : Daten werden geschrieben");
             bufferedWriter.write(msg);
-            bufferedWriter.newLine();
             logger.info(connection.getIP() + " : Daten werden gesendet...");
             bufferedWriter.flush();
-            logger.info(connection.getIP() + " : Daten wurden gesendet!");
         } catch (IOException e) {
             logger.error(e.getMessage());
         }

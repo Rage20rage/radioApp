@@ -1,5 +1,8 @@
 package de.marko.radio.client.network;
 
+import de.marko.radio.client.main.Main;
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 
 public class Network {
@@ -16,11 +19,13 @@ public class Network {
         return network;
     }
     public NetworkHandler networkHandler;
+    Logger logger = Main.logger;
 
     public ArrayList<String> stationNames = new ArrayList<>();
     public ArrayList<String> stationURLs = new ArrayList<>();
 
     public void initStreams() {
+        logger.info("Inizialisiere Radiostreams...");
         if(!networkHandler.isConnected()) {
             networkHandler.connect();
         }
@@ -30,6 +35,7 @@ public class Network {
             stationNames.add(i, networkHandler.recive());
             stationURLs.add(i, networkHandler.recive());
         }
+        logger.info("RadioStreams inizialisiert!");
     }
 
 }

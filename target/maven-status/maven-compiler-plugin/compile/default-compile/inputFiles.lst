@@ -1,5 +1,8 @@
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/network/NetworkHandler.java
+/home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/player/PlayerMode.java
+/home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/gui/SpringUtilities.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/Actions/RadioAction.java
+/home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/gui/MainWindow.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/config/NetworkConfig.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/main/Main.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/network/Connection.java
@@ -14,13 +17,18 @@
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/radiostation/Stations.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/config/ConfigHandler.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/config/MySQLConfig.java
+/home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/config/FavoritManager.java
+/home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/gui/ButtonEventManager.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/main/Main.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/config/NetworkConfig.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/network/Network.java
+/home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/gui/LayoutManager.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/network/NetworkHandler.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/network/Sheduler.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/main/Inizialiser.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/MySQL/MySQL.java
+/home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/gui/WindowManager.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/radiostation/Station.java
+/home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/client/listener/KeyListener.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/main/Inizialiser.java
 /home/markzimmer/IdeaProjects/radioApp/src/main/java/de/marko/radio/server/network/Listener.java

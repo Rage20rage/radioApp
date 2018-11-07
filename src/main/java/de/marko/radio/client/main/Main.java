@@ -1,12 +1,13 @@
 package de.marko.radio.client.main;
 
 import de.marko.radio.client.gui.WindowManager;
+import de.marko.radio.client.listener.KeyListener;
 import de.marko.radio.client.network.Network;
-import de.marko.radio.client.player.PlayerManager;
+import okhttp3.OkHttpClient;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-
-import java.util.Scanner;
+import org.jnativehook.GlobalScreen;
+import org.jnativehook.NativeHookException;
 
 public class Main {
 
@@ -20,6 +21,7 @@ public class Main {
                 logger.info("Debug wurde aktiviert!");
             }
         }
+        Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FATAL);
         Inizialiser.inizialise();
         Network.getInstance().initStreams();
         Runtime.getRuntime().addShutdownHook(new Thread() {
@@ -31,33 +33,17 @@ public class Main {
             System.out.println(Network.getInstance().stationNames.get(i) + " : " + Network.getInstance().stationURLs.get(i));
         }
         WindowManager.getInstance().startMainWindow();
-        //---------------------------------------------------------------------------------------------------------------------------------------------------------
-        while (true) {
-            Scanner scanner = new Scanner(System.in);
-            logger.info("Bitte gben sie den gewünschten Sender ein: ");
-            String stationName = scanner.nextLine();
-            if(stationName.equalsIgnoreCase("stop")) {
-                System.exit(0);
-            }
-            int urlPosition = getURLPosition(stationName);
-            if(urlPosition == -1) {
-                logger.warn("Dieser Sender existiert nicht!");
-            } else {
-                PlayerManager.getInstance().startNewPodcast(Network.getInstance().stationURLs.get(urlPosition));
-            }
+        java.util.logging.Logger nativeLogger = java.util.logging.Logger.getLogger(GlobalScreen.class.getPackage().getName());
+        nativeLogger.setLevel(java.util.logging.Level.OFF);
+        try {
+            Thread.sleep(500);
+            GlobalScreen.registerNativeHook();
+        } catch (NativeHookException e) {
+            logger.error(e.getMessage());
+        } catch (InterruptedException e) {
+            logger.error(e.getMessage());
         }
-        //---------------------------------------------------------------------------------------------------------------------------------------------------------
-    }
-
-    private static int getURLPosition(String stationName) {
-        int i = 0;
-        for (String name : Network.getInstance().stationNames) {
-            if(name.equals(stationName)) {
-                return i;
-            }
-            i++;
-        }
-        return -1;
+        GlobalScreen.addNativeKeyListener(new KeyListener());
     }
 
 }

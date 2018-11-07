@@ -16,20 +16,27 @@ public class Player extends Thread {
 
     String url;
 
-    public Player(String url) {
+    protected Player(String url) {
         this.url = url;
     }
 
+    protected static Player playerClass;
+
+    protected InputStream inputStream;
+    protected Response response;
+    protected Request request;
+    protected OkHttpClient client;
+
     @Override
-    public void run() {
+    public synchronized void run() {
         try {
             logger.debug("Inizialisiere Verbindung zum ausgewältem Radiosender...");
-            OkHttpClient client = new OkHttpClient();
+            client = new OkHttpClient();
             logger.info("Verbinde mit dem ausgewältem Radiosender...");
-            Request request = new Request.Builder().url(new URL(url)).build();
-            Response response = client.newCall(request).execute();
+            request = new Request.Builder().url(new URL(url)).build();
+            response = client.newCall(request).execute();
             logger.debug("Baue den Input-Stream auf...");
-            InputStream inputStream = response.body().byteStream();
+            inputStream = response.body().byteStream();
             player = new javazoom.jl.player.Player(inputStream);
             logger.info("Starte mit der Wiedergabe...");
             player.play();

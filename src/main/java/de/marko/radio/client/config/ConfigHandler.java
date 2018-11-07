@@ -18,8 +18,27 @@ public class ConfigHandler {
 
     public void createConfigFile(String name) {
         logger.info("Erstelle Datei " + name + ".config, falls diese nicht Vorhanden ist...");
-        new File("RadioAPP/config/" + name + ".config");
-        logger.info("Datei existiert nun!");
+        File configFile = new File("RadioAPP/config/" + name + ".config");
+        File mainDir = new File("RadioAPP");
+        File configDir = new File("RadioAPP/config/");
+        File dataDir = new File("RadioAPP/data/");
+        if(!mainDir.exists()) {
+            mainDir.mkdir();
+        }
+        if(!configDir.exists()) {
+            configDir.mkdir();
+        }
+        if(!dataDir.exists()) {
+            dataDir.mkdir();
+        }
+        if(!configFile.exists()) {
+            try {
+                configFile.createNewFile();
+            } catch (IOException e) {
+                logger.error(e.getMessage());
+            }
+        }
+        logger.info("Die Datei existiert nun!");
     }
 
     public void setNewConfig(String filename, String key, String value) {
